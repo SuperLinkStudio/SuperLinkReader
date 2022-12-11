@@ -1,0 +1,1 @@
+import{_ as o,o as t,c as s,a as e}from"./index-5172e0f1.js";const c={},_={class:"about"},n=e("h1",null,"关于",-1),a=e("p",null,"Willow Reader v1.0.0, WillowStudio 内部版",-1),l=[n,a];function r(i,d){return t(),s("div",_,l)}const f=o(c,[["render",r]]);export{f as default};
