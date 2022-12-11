@@ -21,7 +21,7 @@ jobs:
       
       - name: release
         if: matrix.os == 'windows-latest'
-        run: npm publish
+        run: npm make
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           
