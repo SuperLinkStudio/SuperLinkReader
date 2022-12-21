@@ -308,7 +308,8 @@ class MobiFile {
     p_header.record_size = this.getUint16();
     p_header.encryption_type = this.getUint16();
     this.skip(2);
-
+	
+	//console.log(p_header);
     return p_header;
   }
 
@@ -360,7 +361,7 @@ class MobiFile {
     mobi_header.extra_flags = this.getUint16();
 
     this.setoffset(start_offset + mobi_header.header_length);
-
+	//console.log(mobi_header);
     return mobi_header;
   }
   load_exth_header() {
@@ -376,6 +377,9 @@ class MobiFile {
     while (bookDom.firstChild) {
       bookDom.removeChild(bookDom.firstChild);
     }
+	
+	content = content.replace(new RegExp("<mbp:pagebreak/>","gm"), "<hr/>")
+	console.log(content);
 
     var bookDoc = domParser.parseFromString(content, "text/html");
     bookDoc.body.childNodes.forEach(function (x) {
@@ -388,6 +392,9 @@ class MobiFile {
     for (var i = 0; i < imgDoms.length; i++) {
       this.render_image(imgDoms, i);
     }
+	
+	//console.log(this);
+	//console.log(Buffer);
   }
   render_image(imgDoms, i) {
     var imgDom = imgDoms[i];
@@ -407,6 +414,5 @@ function readMobi(file) {
     var file_content = event.target.result;
     new MobiFile(file_content).render_to("book-content");
   };
-  console.log(file);
   reader.readAsArrayBuffer(file);
 }
