@@ -1,0 +1,54 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Superlink Reader</title>
+		<link href="./ribbon/ribbon.css" rel="stylesheet" type="text/css" />
+		<link href="./soft_button.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="./ribbon/jquery.js"></script>
+		<script type="text/javascript" src="./ribbon/ribbon.js"></script>
+		<script type="text/javascript" src="./ribbon/jquery.tooltip.min.js"></script>
+		<script type="text/javascript" src="./src/mobi.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#ribbon').ribbon();
+			});
+
+			function onChange(event) {
+				var file = event.target.files[0];
+				var reader = new FileReader();
+				reader.onload = function(event) {
+					var file_content = event.target.result;
+					new MobiFile(file_content).render_to("book");
+				};
+				reader.readAsArrayBuffer(file);
+			}
+			
+			function openFile() {
+				document.getElementById("mobifile").click();
+				console.log('111');
+			}
+		</script>
+
+	</head>
+	<body bgcolor="#c9cdd2">
+		<input id="mobifile" style="display: none;" type="file" onchange="onChange(event)">
+		<div id="ribbon">
+			<span class="ribbon-window-title">Superlink Reader</span>
+			<div class="ribbon-tab" id="file-tab">
+				<span class="ribbon-title">文件</span>
+				<div class="ribbon-button ribbon-button-large" id="btn-open" onclick="openFile()">
+					<span class="button-title">打开</span>
+					<span class="button-help">从计算机中打开.mobi格式的文件.</span>
+					<img class="ribbon-icon ribbon-normal" src="./icons/normal/open-page.png" />
+					<img class="ribbon-icon ribbon-hot" src="./icons/hot/open-page.png" />
+					<img class="ribbon-icon ribbon-disabled" src="./icons/disabled/open-page.png" />
+				</div>
+			</div>
+		</div>
+		<div class="page" id="book">
+			<h2>请先打开 mobi 文件!!!</h2>
+		</div>
+	</body>
+</html>
