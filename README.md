@@ -3,7 +3,7 @@ by `SuperLinkStudio曹曦晨`
 
 mobi 阅读器, electron+html+css 制作, 目前正在开发中.
 
-**[在线版](http://littlefrog.ezyro.com/superlink/)** | **离线版(在 Actions 里)**
+**[在线版](http://littlefrog.ezyro.com/superlink/)** | **[离线版](https://github.com/SuperLinkStudio/SuperLinkReader/suites/10171213702/artifacts/497414626)**
 
 ## 声明
 * 请不要以任何形式进行转载，编译，反编译等不尊重版权的行为。
